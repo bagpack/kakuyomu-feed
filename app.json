@@ -1,0 +1,7 @@
+{
+  "name": "kakuyomu feed API",
+  "description": "Providing kakuyomu feed API",
+  "repository": "https://github.com/bagpack/kakuyomu-feed",
+  "keywords": ["node", "kakuyomu", "feed"],
+  "stack": "container"
+}
