@@ -4,7 +4,7 @@ export default class Episode {
   readonly url: string;
   readonly updated: Date;
 
-  constructor(id, subtitle, url, updated) {
+  constructor(id: string, subtitle: string, url: string, updated: Date) {
     this.id = id;
     this.subtitle = subtitle;
     this.url = url;

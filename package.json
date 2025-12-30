@@ -6,25 +6,35 @@
   "repository": "TODO",
   "author": "bagpack <kk.shaba@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "dependencies": {
-    "cacheman-file": "^0.2.1",
-    "express": "^4.17.3",
-    "feed": "^2.0.1",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.7",
-    "xmldom": "^0.5.0",
-    "xpath": "^0.0.27"
+    "express": "^4.22.1",
+    "feed": "^5.1.0",
+    "undici": "^6.18.1",
+    "@xmldom/xmldom": "^0.8.10",
+    "xpath": "^0.0.34"
   },
   "devDependencies": {
-    "@types/express": "^4.16.0",
-    "@types/node": "^12.7.12",
+    "@types/express": "^4.17.25",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^18.19.130",
     "@types/path-to-regexp": "^1.7.0",
-    "@types/request-promise-native": "^1.0.15",
-    "prettier": "^1.14.3",
-    "typescript": "^3.0.3"
+    "jest": "^29.7.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.0",
+    "@types/supertest": "^2.0.16",
+    "prettier": "^1.19.1",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.4.5"
   },
   "scripts": {
     "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "test": "jest",
     "watch": "tsc --watch",
     "docker-build": "docker build . -t kakuyomu-feed",
     "docker-run": "docker run -p 3000:3000 -d kakuyomu-feed"

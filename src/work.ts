@@ -31,7 +31,7 @@ export default class Work {
     this.updated = updated;
   }
 
-  addEpisodes(episodes: Episode[]) {
+  addEpisodes(episodes: Episode[]): void {
     this.episodes = this.episodes.concat(episodes);
   }
 }

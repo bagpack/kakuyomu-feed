@@ -1,16 +1,42 @@
 kakuyomu-feed
 =======
 
-I'm angry about that [Kakuyomu](https://kakuyomu.jp/) does not support RSS feed.
-So, we make RSS feed of Kakuyomu.
+Generate Atom/RSS feeds for Kakuyomu works.
 
+I'm frustrated that [Kakuyomu](https://kakuyomu.jp/) doesn't provide RSS feeds.
+So this project generates RSS/Atom feeds for Kakuyomu.
 
 # Features
 
 - Support Atom1.0 and RSS2.0(by [jpmonette/feed](https://github.com/jpmonette/feed))
 - Response Caching
+- Lightweight HTTP API
 
 # Getting Started
+
+## Requirements
+
+- Node.js 20
+- Yarn (or use `npx yarn`)
+
+## Usage
+
+```
+GET /feed/:work_id.atom
+GET /feed/:work_id.rss
+```
+
+Example work:
+
+```
+https://kakuyomu.jp/works/4852201425154978794
+```
+
+Curl:
+
+```
+$ curl https://[your-domain]/feed/4852201425154978794.rss
+```
 
 ## Deploy to Heroku
 
@@ -23,24 +49,35 @@ $ yarn run docker-build
 $ yarn run docker-run
 ```
 
-# API
+## Development
 
 ```
-https://[your-domain]/feed/[work_id].[rss|atom]
+$ npx yarn install
+$ npx yarn test
 ```
 
-`work_id` is a number after works.
+Local server:
 
 ```
-ex)
-https://kakuyomu.jp/works/4852201425154978794
+$ npx yarn build
+$ node dist/index.js
 ```
 
-Curl request sample.
+## CI
 
-```
-$ curl https://[your-domain]/feed/4852201425154978794.rss
-```
+GitHub Actions runs `yarn test` and verifies Docker builds.
+
+## Cache
+
+Feed responses are cached under `./cache` (relative to the project root). Ensure this directory is writable in your runtime environment, or mount a persistent volume in Docker/Heroku if you want cache retention across restarts.
+
+## Environment Variables
+
+`CACHE_TTL_SEC` controls cache TTL in seconds (default: 600).
+
+## Root Endpoint
+
+`/` returns a short usage message.
 
 # Reference
 
