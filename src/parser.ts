@@ -1,6 +1,6 @@
 import * as xpath from "xpath";
 import { DOMParser as dom } from "xmldom";
-import * as urlParser from "url";
+import { URL } from "url";
 
 import Work from "./work";
 import Episode from "./episode";
@@ -50,9 +50,7 @@ function parseWork(doc: Document): Work {
     author,
     new Date(updatedStr)
   );
-  const rootUrl = `${urlParser.parse(url).protocol}//${
-    urlParser.parse(url).host
-  }`;
+  const rootUrl = new URL(url).origin;
   work.addEpisodes(parseEpisodes(rootUrl, doc));
 
   return work;
@@ -62,7 +60,7 @@ function parseEpisodes(rootUrl: string, doc: Document): Episode[] {
   const episodeValues = xpath.select(
     '//section[@class="widget-toc"]/div/ol/li[@class="widget-toc-episode"]',
     doc
-  );
+  ) as Node[];
   const episodes = [];
   for (const episodeValue of episodeValues) {
     const episodeNode = episodeValue as Node;

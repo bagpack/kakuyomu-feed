@@ -1,11 +1,15 @@
-import request = require("request-promise-native");
 import { Feed } from "feed";
+import { fetch } from "undici";
 
 import parseKakuyomu from "./parser";
 import Work from "./work";
 
 export default async function getFeed(url): Promise<Feed> {
-  const htmlStr = await request(url);
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Request failed: ${response.status}`);
+  }
+  const htmlStr = await response.text();
   const work = parseKakuyomu(htmlStr);
   return createFeed(work);
 }
