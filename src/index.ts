@@ -6,7 +6,7 @@ import * as cache from "./feedcache";
 import getFeed from "./feed";
 
 const KAKUYOMU_EPISODE_BASE = "https://kakuyomu.jp/works";
-const FEED_DEFAULT_FORMAT = "atom";
+const FEED_DEFAULT_FORMAT = "rss";
 const CACHE_TTL_SEC = Number.isFinite(Number(process.env.CACHE_TTL_SEC))
   ? Number(process.env.CACHE_TTL_SEC)
   : 60 * 10;
