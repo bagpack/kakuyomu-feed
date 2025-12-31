@@ -1,17 +1,18 @@
 kakuyomu-feed
 =======
 
-Kakuyomu作品のAtom/RSSフィードを生成します。
+Generate Atom/RSS feeds for Kakuyomu works.
 
-[English README](README.en.md)
+[日本語版 README](README.md)
 
-[Kakuyomu](https://kakuyomu.jp/) にRSSフィードがないため、RSS/Atomを生成するために作りました。
+I'm frustrated that [Kakuyomu](https://kakuyomu.jp/) doesn't provide RSS feeds.
+So this project generates RSS/Atom feeds for Kakuyomu.
 
 # Features
 
-- Atom 1.0 / RSS 2.0 をサポート（[jpmonette/feed](https://github.com/jpmonette/feed)）
-- レスポンスキャッシュ
-- 軽量HTTP API
+- Support Atom1.0 and RSS2.0(by [jpmonette/feed](https://github.com/jpmonette/feed))
+- Response Caching
+- Lightweight HTTP API
 
 # Getting Started
 
@@ -27,7 +28,7 @@ GET /feed/:work_id.atom
 GET /feed/:work_id.rss
 ```
 
-作品URL例:
+Example work:
 
 ```
 https://kakuyomu.jp/works/4852201425154978794
@@ -57,7 +58,7 @@ $ npx yarn install
 $ npx yarn test
 ```
 
-ローカル起動:
+Local server:
 
 ```
 $ npx yarn build
@@ -70,15 +71,15 @@ GitHub Actions runs `yarn test` and verifies Docker builds.
 
 ## Cache
 
-フィードは `./cache`（プロジェクトルート相対）にキャッシュされます。実行環境で書き込み可能にするか、Docker/Herokuでは永続ボリュームにマウントしてください。
+Feed responses are cached under `./cache` (relative to the project root). Ensure this directory is writable in your runtime environment, or mount a persistent volume in Docker/Heroku if you want cache retention across restarts.
 
 ## Environment Variables
 
-`CACHE_TTL_SEC` でキャッシュTTL（秒）を指定します（デフォルト: 600）。
+`CACHE_TTL_SEC` controls cache TTL in seconds (default: 600).
 
 ## Root Endpoint
 
-`/` は簡単な使い方を返します。
+`/` returns a short usage message.
 
 # Reference
 
