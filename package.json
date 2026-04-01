@@ -13,7 +13,7 @@
     "express": "^4.22.1",
     "feed": "^5.1.0",
     "undici": "^6.18.1",
-    "@xmldom/xmldom": "^0.8.10",
+    "@xmldom/xmldom": "^0.8.12",
     "xpath": "^0.0.34"
   },
   "devDependencies": {
